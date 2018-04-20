@@ -1,0 +1,50 @@
+
+.blog-write {
+    padding: 10px;
+    font-size: 16px;
+
+    .blog-title {
+        font-size: 30px;
+    }
+    
+    form {
+        display: block;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    label {
+        display: block;
+        line-height: 1.8;
+        padding : 10px 0;
+        margin-top: 10px;
+    }
+    input, textarea {
+        display: block;
+        width: 100%;
+        font-size: 18px;
+        line-height: 1.6;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #999;
+        margin-bottom: 20px;
+    }
+    input {
+
+    }
+    textarea {
+        resize: none;
+    }
+    .button-group {
+        margin: 10px 0;
+        button {
+            display: block;
+            width: 100%;
+            font-size: 18px;
+            line-height: 3;
+            border: none;
+            color: #fff;
+            background-color: #228be6;
+        }
+    }
+}

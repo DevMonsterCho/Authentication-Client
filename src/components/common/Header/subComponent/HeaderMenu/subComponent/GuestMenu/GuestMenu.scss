@@ -1,0 +1,51 @@
+
+.guest-menu {
+    padding: 20px;
+    font-size: 14px;
+    text-align: center;
+
+    .title {
+        font-size: 18px;
+        font-weight: bold;
+        padding: 10px 0;
+    }
+}
+
+.button-group {
+    margin: 15px 0 10px;
+}
+
+.button {
+    outline: none;
+    border: none;
+    background-color: #fff;
+    color: #228be6;
+    font-weight: bold;
+    line-height: 3;
+    position: relative;
+    left: 0;
+    top: 0;
+    box-shadow: none;
+    transition: all 0.1s ease-in;
+
+    &:hover {
+        left: -2px;
+        top: -2px;
+        box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    }
+
+    &:active {
+        left: 0;
+        top: 0;
+        box-shadow: none;
+    }
+
+    &.inline {
+        display: inline-block;
+        padding: 0 20px;
+    }
+    &.block {
+        display: block;
+        width: 100%;
+    }
+}
