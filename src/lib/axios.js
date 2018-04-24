@@ -2,9 +2,12 @@ import axios from 'axios';
 import * as cookie from './cookie';
 
 let instance = axios.create({
-  baseURL: 'https://api.authentication.dmcho.com',
-  responseType: 'json',
-  timeout: 10000
+    baseURL: 'https://api.authentication.dmcho.com',
+    responseType: 'json',
+    timeout: 3000,
+    headers: {
+      crossDomain: true
+    },
 });
 
 instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
