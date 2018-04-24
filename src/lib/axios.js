@@ -5,12 +5,10 @@ let instance = axios.create({
     baseURL: 'https://api.authentication.dmcho.com',
     responseType: 'json',
     timeout: 3000,
-    headers: {
-      crossDomain: true,
-      'Access-Control-Allow-Origin': "*"
-    },
 });
 
+instance.defaults.headers.common['crossDomain'] = true;
+instance.defaults.headers.common['Access-Control-Allow-Origin'] = "*";
 instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 instance.interceptors.request.use(function (config) {
