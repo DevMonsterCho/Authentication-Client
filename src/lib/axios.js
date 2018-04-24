@@ -7,9 +7,9 @@ let instance = axios.create({
     timeout: 3000,
 });
 
-instance.defaults.headers.common['crossDomain'] = true;
-instance.defaults.headers.common['Access-Control-Allow-Origin'] = "https://api.authentication.dmcho.com";
-instance.defaults.headers.common['Access-Control-Allow-Credentials'] = true;
+// instance.defaults.headers.common['crossDomain'] = true;
+// instance.defaults.headers.common['Access-Control-Allow-Origin'] = "https://api.authentication.dmcho.com";
+// instance.defaults.headers.common['Access-Control-Allow-Credentials'] = true;
 instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 instance.interceptors.request.use(function (config) {
