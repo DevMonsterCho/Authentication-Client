@@ -8,7 +8,8 @@ let instance = axios.create({
 });
 
 instance.defaults.headers.common['crossDomain'] = true;
-instance.defaults.headers.common['Access-Control-Allow-Origin'] = "*";
+instance.defaults.headers.common['Access-Control-Allow-Origin'] = "https://api.authetication.dmcho.com";
+instance.defaults.headers.common['Access-Control-Allow-Credentials'] = true;
 instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 instance.interceptors.request.use(function (config) {
