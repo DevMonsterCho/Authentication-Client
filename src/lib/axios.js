@@ -6,7 +6,8 @@ let instance = axios.create({
     responseType: 'json',
     timeout: 3000,
     headers: {
-      crossDomain: true
+      crossDomain: true,
+      'Access-Control-Allow-Origin': "*"
     },
 });
 
