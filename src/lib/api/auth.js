@@ -13,10 +13,21 @@ export const postLogin = (data) => {
 
     return axios.post('/api/auth/login', data)
         .then((res) => {
+            console.log(res.status);
             console.log(res.data);
-            return {
-                response: res.data,
-                error: null
+            // if (res.status > 100) { // 0 ~ 99
+            // } else if (res.status > 200) { // 100 ~ 199
+            // } else if (res.status > 300) { // 200 ~ 299
+            if (res.status > 400) { // 000 ~ 399
+                return {
+                    response: res.data,
+                    error: null
+                }
+            } else if (res.status > 400) { // 400 ~ 
+                return {
+                    response: res.data,
+                    error: res.status
+                }
             }
         })
         .catch(e => {
