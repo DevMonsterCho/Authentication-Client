@@ -60,6 +60,7 @@ class MemberExtendComponent extends Component {
     }
     this.props.BaseActions.postAuthLogin(data).then(res => {
       if(res.error) return;
+      console.log(res);
       return this.props.history.replace('/');
     });
   }
