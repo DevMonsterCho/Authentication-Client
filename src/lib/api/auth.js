@@ -116,6 +116,7 @@ export const postAuthLogin = async (data) => {
         .catch(e => {
             console.error(e.status);
             console.error(e);
+            console.log(JSON.stringify(e, null, 2))
             return {
                 user: {
                     email: null,
