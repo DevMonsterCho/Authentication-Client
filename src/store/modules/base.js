@@ -1,4 +1,5 @@
 import { createAction, handleActions } from 'redux-actions';
+import * as cookie from 'lib/cookie';
 
 import { Map, Record } from 'immutable';
 import { pender } from 'redux-pender';
@@ -68,6 +69,7 @@ export default handleActions({
         onSuccess: (state, action) => {
             console.log('POST_AUTH_JOIN - onSuccess :', action);
             const { error, user } = action.payload;
+            cookie.set('set', 'asdasfd', 1);
             return state.setIn(['user', 'name'], user.name)
                         .setIn(['user', 'email'], user.email)
                         .setIn(['user', 'error'], error)
@@ -104,6 +106,7 @@ export default handleActions({
         onSuccess: (state, action) => {
             console.log('POST_AUTH_LOGIN - onSuccess :', action);
             const { error, user } = action.payload;
+
             return state.setIn(['user', 'name'], user.name)
                         .setIn(['user', 'email'], user.email)
                         .setIn(['user', 'error'], error)

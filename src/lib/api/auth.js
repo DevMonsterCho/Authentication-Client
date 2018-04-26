@@ -13,8 +13,6 @@ export const postLogin = (data) => {
 
     return axios.post('/api/auth/login', data)
         .then((res) => {
-            console.log(res.status);
-            console.log(res.data);
             return {
                 response: res.data,
                 error: null
@@ -35,6 +33,10 @@ export const postAuthJoin = (data) => {
 
     return axios.post('/api/auth/join', data)
         .then((res) => {
+            console.log('/api/auth/login');
+            console.log(res.status);
+            console.log(res.data);
+
             console.log(res.data.user);
             const {email, name} = res.data.user;
             return {

@@ -20,9 +20,6 @@ export const postBlogWrite = (data) => axios.post('/api/blog/write', data, confi
         return console.error(e)
     })
 
-
-
-
 const config = {
     onUploadProgress: (progressEvent) => {
         const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
