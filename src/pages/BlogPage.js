@@ -17,15 +17,15 @@ import BlogModify from 'components/blog/BlogModify';
 class HomePage extends Component {
   render() {
     return (
-        <Switch>
+      <Switch>
         <Layout>
-          <Route exact path="/blog" component={BlogList}/>
-          <Route exact path="/blog/write" component={BlogWrite}/>
-          <Route exact path="/blog/view/:id/" component={BlogView}/>
-          <Route exact path="/blog/modify/:id/" component={BlogModify}/>
-          </Layout>
-          <Route component={NotFoundPage}/>
-        </Switch>
+          <Route exact path="/blog" component={BlogList} />
+          <Route exact path="/blog/write" component={BlogWrite} />
+          <Route exact path="/blog/view/:id/" component={BlogView} />
+          <Route exact path="/blog/modify/:id/" component={BlogModify} />
+        </Layout>
+        <Route component={NotFoundPage} />
+      </Switch>
     );
   }
 };

@@ -1,12 +1,13 @@
 const set = (cname, cvalue, exdays) => {
     let d = new Date();
-    let hostname = process.env.host;
+    let hostname = 'authentication.dmcho.com';
   
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     let expires = "expires="+ d.toUTCString();
     let now = new Date();
     console.log(`today date = ${now.toUTCString()}`)
     console.log(`expires date = ${expires}`)
+    console.log(`window.document.cookie = ${cname + "=" + cvalue + ";" + expires + "; path=/;" + "domain=." + hostname + ";"}`)
     window.document.cookie = cname + "=" + cvalue + ";" + expires + "; path=/;" + "domain=." + hostname + ";";
   };
   
