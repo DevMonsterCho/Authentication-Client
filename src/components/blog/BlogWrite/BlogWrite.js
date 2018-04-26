@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as blogActions from 'store/modules/blog';
+
 import styles from './BlogWrite.scss';
 import classNames from 'classnames/bind';
-import axios from 'axios';
 
 const cx = classNames.bind(styles);
 
@@ -12,7 +15,8 @@ class BlogWrite extends Component {
     this.state = {
       input: {
         title: '',
-        body: '',
+        text: '',
+        md: '',
       },
     }
   }
@@ -22,31 +26,19 @@ class BlogWrite extends Component {
     let formData = new FormData();
     // formData.append('title', this.inputTitle.value);
     // formData.append('text', this.inputBody.value);
-    formData.append('file', this.inputFiles.files);
-    console.log(formData);
+    formData.append('files', this.inputFiles.files);
+    // console.log(formData);
 
     let data = {};
+    data.email = this.props.user.email;
+    data.name = this.props.user.name;
     data.title = this.inputTitle.value;
-    data.text = this.inputBody.value;
-    data.file = formData;
+    data.text = this.inputText.value;
+    data.md = this.inputMd.value;
+    data.files = this.inputFiles.files;
 
-    const config = {
-      onUploadProgress: this.onUploadProgress
-    }
-
-    axios.post('/api/blog/write', data, config)
-      .then((res) => {
-        console.log(`axios.post('/api/blog/write', data, config)`)
-        console.log(res);
-      })
-      .catch((e) => {
-        console.log(`axios.post('/api/blog/write', data, config)`)
-        console.error(e);
-      })
-  }
-
-  onUploadProgress = (progressEvent) => {
-    const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total); 
+    const { BlogActions } = this.props;
+    BlogActions.postBlogWrite(data)
   }
 
   handleInputChange = (e) => {
@@ -82,15 +74,27 @@ class BlogWrite extends Component {
             onChange={this.handleInputChange}
             className={cx('input', 'title')}
           />
-          <label htmlFor={`body`}>body</label>
-          <textarea id={`body`}
+          <label htmlFor={`text`}>text</label>
+          <textarea id={`text`}
             type={`text`}
-            ref={ref => this.inputBody = ref}
-            name={`body`}
+            ref={ref => this.inputText = ref}
+            name={`text`}
             placeholder={`require`}
-            value={this.state.input.body}
+            value={this.state.input.text}
             onChange={this.handleInputChange}
-            className={cx('input', 'textarea', 'body')}
+            className={cx('input', 'textarea', 'text')}
+            rows={6}
+            cols={50}
+          />
+          <label htmlFor={`md`}>md</label>
+          <textarea id={`md`}
+            type={`text`}
+            ref={ref => this.inputMd = ref}
+            name={`md`}
+            placeholder={`require`}
+            value={this.state.input.md}
+            onChange={this.handleInputChange}
+            className={cx('input', 'textarea', 'md')}
             rows={6}
             cols={50}
           />
@@ -113,4 +117,12 @@ class BlogWrite extends Component {
   }
 }
 
-export default BlogWrite;
+export default connect(
+  (state) => ({
+    user: state.base.get('user').toJS(),
+    list: state.blog.get('list').toJS(),
+  }),
+  (dispatch) => ({
+    BlogActions: bindActionCreators(blogActions, dispatch),
+  })
+)(BlogWrite);

@@ -19,16 +19,6 @@ export const postLogin = (data) => {
                 response: res.data,
                 error: null
             }
-            // if (res.status > 100) { // 0 ~ 99
-            // } else if (res.status > 200) { // 100 ~ 199
-            // } else if (res.status > 300) { // 200 ~ 299
-            // if (res.status > 400) { // 000 ~ 399
-            // } else if (res.status > 400) { // 400 ~ 
-            //     return {
-            //         response: res.data,
-            //         error: res.status
-            //     }
-            // }
         })
         .catch(e => {
             console.error(e);
@@ -122,7 +112,7 @@ export const postAuthLogin = async (data) => {
                     email: null,
                     name: 'guest'
                 },
-                error: e.response.data
+                error: e.response.data.message
             }
         })
 }

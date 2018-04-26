@@ -21,8 +21,8 @@ class HomePage extends Component {
         <Layout>
           <Route exact path="/blog" component={BlogList}/>
           <Route exact path="/blog/write" component={BlogWrite}/>
-          <Route exact path="/blog/:id/write" component={BlogView}/>
-          <Route exact path="/blog/:id/modify" component={BlogModify}/>
+          <Route exact path="/blog/view/:id/" component={BlogView}/>
+          <Route exact path="/blog/modify/:id/" component={BlogModify}/>
           </Layout>
           <Route component={NotFoundPage}/>
         </Switch>

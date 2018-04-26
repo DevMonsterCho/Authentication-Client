@@ -29,7 +29,7 @@ class HeaderGnb extends Component {
       <nav className={cx('gnb')}>
         <ul className={cx('gnb-ul')}>
           <li className={cx('gnb-li')}><NavLink to={`/about`} activeClassName="active">About</NavLink></li>
-          <li className={cx('gnb-li')}><NavLink to={`/blog`} activeClassName="active">Blog</NavLink></li>
+          <li className={cx('gnb-li')}><NavLink to={`/blog/write`} activeClassName="active">Blog</NavLink></li>
         </ul>
       </nav>
     );

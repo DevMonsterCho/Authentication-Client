@@ -17,8 +17,8 @@ const SET_EMAIL = 'SET_EMAIL';
 // action creators
 export const getAuthCheck = createAction(GET_AUTH_CHECK, authApi.getAuthCheck);
 export const setAuthError = createAction(SET_AUTH_ERROR);
-export const postAuthLogin = createAction(POST_AUTH_JOIN, authApi.postAuthLogin);
-export const postAuthJoin = createAction(POST_AUTH_LOGIN, authApi.postAuthJoin);
+export const postAuthLogin = createAction(POST_AUTH_LOGIN, authApi.postAuthLogin);
+export const postAuthJoin = createAction(POST_AUTH_JOIN, authApi.postAuthJoin);
 export const postAuthLogout = createAction(POST_AUTH_LOGOUT, authApi.postAuthLogout);
 export const postAuthModify = createAction(POST_AUTH_MODIFY, authApi.postAuthModify);
 
