@@ -7,25 +7,6 @@ export const getAuthCheck = () => axios.get('/api/auth/check')
     })
     .catch(e => console.error(e))
 
-export const postLogin = (data) => {
-    if(!data.email) return { error: `이메일이 입력되지 않았습니다.` };
-    if(!data.password) return { error: `비밀번호가 입력되지 않았습니다.` };
-
-    return axios.post('/api/auth/login', data)
-        .then((res) => {
-            return {
-                response: res.data,
-                error: null
-            }
-        })
-        .catch(e => {
-            console.error(e);
-            return {
-                error: e.response.data
-            }
-        })
-}
-
 export const postAuthJoin = (data) => {
     if(!data.name) return { error: `이름 입력되지 않았습니다.` };
     if(!data.email) return { error: `이메일이 입력되지 않았습니다.` };
@@ -36,8 +17,6 @@ export const postAuthJoin = (data) => {
             console.log('/api/auth/login');
             console.log(res.status);
             console.log(res.data);
-
-            console.log(res.data.user);
             const {email, name} = res.data.user;
             return {
                 user: {
@@ -48,13 +27,13 @@ export const postAuthJoin = (data) => {
             }
         })
         .catch(e => {
-            console.error(e);
+            console.error(JSON.stringify(e, null, 2));
             return {
                 user: {
                     email: null,
                     name: 'guest'
                 },
-                error: e.response.data
+                error: e.response.data.message
             }
         })
 }
@@ -95,13 +74,12 @@ export const postAuthLogin = async (data) => {
         .then((res) => {
             console.log(res);  
             console.log(res.status);    
-            console.log(res.data.user);
-            const {email, name} = res.data.user;
+            console.log(res.data);
+            const {sess, user} = res.data;
+            const {email, name} = user;
             return {
-                user: {
-                    email: email,
-                    name: name
-                },
+                user,
+                sess,
                 error: null
             }
         })

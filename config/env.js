@@ -87,6 +87,7 @@ function getClientEnvironment(publicUrl) {
       return env;
     },
     {
+      'file': JSON.stringify(url.file),
       'api': JSON.stringify(url.api),
       'www': JSON.stringify(url.www)
     }),

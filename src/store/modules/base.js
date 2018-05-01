@@ -104,9 +104,9 @@ export default handleActions({
         type: POST_AUTH_LOGIN,
         onSuccess: (state, action) => {
             console.log('POST_AUTH_LOGIN - onSuccess :', action);
-            const { error, user } = action.payload;
-
-            cookie.set('asdasaskjdhkjashdkjhds', 'asdasfd', 1);
+            const { error, user, sess } = action.payload;
+            let sessName = 'dmcho:sess';
+            cookie.set(sessName, sess, 1);
 
             return state.setIn(['user', 'name'], user.name)
                         .setIn(['user', 'email'], user.email)

@@ -13,16 +13,21 @@ import BlogList from 'components/blog/BlogList';
 import BlogWrite from 'components/blog/BlogWrite';
 import BlogView from 'components/blog/BlogView';
 import BlogModify from 'components/blog/BlogModify';
+import FileList from 'components/blog/FileList';
 
 class HomePage extends Component {
   render() {
     return (
       <Switch>
         <Layout>
+          <div className={``}>
+            
+          </div>
           <Route exact path="/blog" component={BlogList} />
           <Route exact path="/blog/write" component={BlogWrite} />
           <Route exact path="/blog/view/:id/" component={BlogView} />
           <Route exact path="/blog/modify/:id/" component={BlogModify} />
+          <Route exact path="/blog/file/" component={FileList} />
         </Layout>
         <Route component={NotFoundPage} />
       </Switch>

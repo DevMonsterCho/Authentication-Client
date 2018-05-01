@@ -6,32 +6,30 @@ import * as blogActions from 'store/modules/blog';
 
 import BlogExtendComponent from 'components/blog/BlogExtendComponent';
 import axios from 'lib/axios';
-import moment from 'moment';
 
-import styles from './BlogList.scss';
+import styles from './FileList.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-class BlogList extends BlogExtendComponent.WrappedComponent {
+class FileList extends BlogExtendComponent.WrappedComponent {
   componentDidMount() {
     const { BlogActions } = this.props;
-    BlogActions.getBlogListAll();
+    BlogActions.getFileList();
   }
 
   render() {
     console.log('this.props.list');
+    console.log();
 
     let listJSX = this.props.list.map((item, i) => {
       return (
         <li className={cx('blog-item')}>
+          <img src={`http://dev.api.authentication.dmcho.com/api/file/read/${item.path}`} alt={item.name}/>
           <Link to={`/blog/view/${item._id}`}>
-            <div className={cx('title')}><span>{item.title}</span></div>
-            <div className={cx('date')}>{`${moment(item.createDate).format('ll')}`}</div>
-            <div className={cx('content')}>
-              {item.text && (<p className={cx('text')}>{item.text}</p>)}
-              {item.md && (<p className={cx('md')}>{item.md}</p>)}
-            </div>
+            <div className={cx('title')}>{item.name}</div>
+            <div className={cx('text')}>{item.path}</div>
+            <div className={cx('uploader')}>{item.uploader}</div>
           </Link>
         </li>
       )
@@ -39,6 +37,7 @@ class BlogList extends BlogExtendComponent.WrappedComponent {
 
     return (
       <div className={cx('blog-list-wrap')}>
+        FileList
         <ul className={cx('blog-list')}>
           {listJSX}
         </ul>
@@ -54,4 +53,4 @@ export default connect(
   (dispatch) => ({
     BlogActions: bindActionCreators(blogActions, dispatch),
   })
-)(BlogList);
+)(FileList);

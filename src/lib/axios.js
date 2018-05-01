@@ -2,17 +2,14 @@ import axios from 'axios';
 import * as cookie from './cookie';
 
 let instance = axios.create({
-    baseURL: process.env.api,
-    responseType: 'json',
-    timeout: 3000,
-    headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+  baseURL: process.env.api,
+  responseType: 'json',
+  timeout: 3000,
 });
 
-// instance.defaults.headers.common['crossDomain'] = true;
-// instance.defaults.headers.common['Access-Control-Allow-Origin'] = "https://api.authentication.dmcho.com";
-instance.defaults.headers.common['Access-Control-Allow-Credentials'] = true;
-// instance.defaults.headers.post['Content-Type'] = 'application/json';
-// instance.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
+
+let sess = cookie.get('dmcho:sess') ? cookie.get('dmcho:sess') : '';
+instance.defaults.headers.common['X-Access-Session'] = sess;
 
 instance.interceptors.request.use(function (config) {
   console.log(`%c REQ.${config.method.toUpperCase()} : `, 'color: lightblue', config.url);

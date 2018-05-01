@@ -15,9 +15,9 @@ class Join extends MemberExtendComponent.WrappedComponent {
 
     this.state = {
       input: {
-        name: '',
-        email: '',
-        password: ''
+        name: 'dmcho',
+        email: 'dmcho84@gmail.com',
+        password: '12345'
       }
     }
   }
